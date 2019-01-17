@@ -1,1 +1,1 @@
-include ':app', ':news', ':fileprovider'
+include ':app', ':news'
