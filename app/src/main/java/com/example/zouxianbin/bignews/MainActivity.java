@@ -1,21 +1,15 @@
 package com.example.zouxianbin.bignews;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.util.TimingLogger;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.f.provider.FProvider;
 import com.example.zouxianbin.news.BigNews;
 
 import java.io.File;
@@ -106,31 +100,12 @@ public class MainActivity extends AppCompatActivity {
             });
 
 
-            installApp(MainActivity.this, PATH_APK);
 
             return null;
         }
     }
 
 
-    public static void installApp(Context pContext, File pFile) {
-        if (null == pFile)
-            return;
-        if (!pFile.exists())
-            return;
-        Intent _Intent = new Intent();
-        _Intent.setAction(Intent.ACTION_VIEW);
-        _Intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Uri _uri;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            _Intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            _uri = FProvider.getUriForFile(pContext, pFile);
-        } else {
-            _uri = Uri.fromFile(pFile);
-        }
-        _Intent.setDataAndType(_uri, "application/vnd.android.package-archive");
-        pContext.startActivity(_Intent);
 
-    }
 
 }
